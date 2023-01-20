@@ -1,0 +1,53 @@
+---
+# tasks file for kubernetes
+- name: Install required system packages
+  apt:
+    pkg:
+      - software-properties-common
+      - python-pip
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+    state: latest
+    update_cache: true
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+# - name: Touch a file, using symbolic modes to set the permissions
+#   ansible.builtin.file:
+#     path: /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+#     state: touch
+#     mode: '0755'
+
+# - name: Download apt-key.gpg
+#   ansible.builtin.get_url:
+#     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+#     dest: /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+#     mode: '0440'
+
+- name: add Kubernetes' APT repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: 'kubernetes'
+
+- name: Install required system packages
+  apt:
+    pkg:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: latest
+    update_cache: true
+
+- name: Hold kubelet, kubeadm, kubectl
+  ansible.builtin.dpkg_selections:
+    name: 
+      - kubelet
+      - kubeadm
+      - kubectl
+    selection: hold

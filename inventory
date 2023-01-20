@@ -1,0 +1,13 @@
+master  ansible_host=34.123.14.188
+nod1    ansible_host=34.173.1.28
+
+[nodes]
+nod1
+
+[cluster]
+master
+nod1
+
+[all:var]
+ansible_user=kube
+ansible_ssh_private_key_file=key.pem

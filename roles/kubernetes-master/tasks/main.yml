@@ -1,0 +1,32 @@
+---
+# tasks file for kubernetes-master
+- name: Initialize the cluster
+  shell: kubeadm init --cri-socket=unix:///var/run/cri-dockerd.sock --ignore-preflight-errors=all >> cluster_initialized.txt
+  args:
+    chdir: $HOME
+    creates: cluster_initialized.txt
+
+- name: Sleep for 20 seconds
+  wait_for:
+    timeout: 20
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: $HOME/.kube
+    state: directory
+    mode: '0755'
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /etc/kubernetes/admin.conf
+    dest: $HOME/.kube/config
+    remote_src: yes
+    owner: {{ ansible_user }}
+    group: {{ ansible_user }}
+    mode: '0755'
+
+- name: install Pod network 
+    shell: kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml >> pod_network_setup.txt
+    args:
+      chdir: $HOME
+      creates: pod_network_setup.txt
