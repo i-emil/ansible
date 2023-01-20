@@ -1,6 +1,6 @@
 - name: Docker to all vms
   hosts: cluster
-  become: yes
+  become:   
   roles:
     - docker
 
