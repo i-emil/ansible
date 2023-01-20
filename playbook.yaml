@@ -1,13 +1,18 @@
 - name: Docker to all vms
   hosts: cluster
-  become:   
+  become: yes
   roles:
     - docker
+
+- name: Install kubernetes
+  hosts: cluster
+  become: yes
+  roles:
+    - kubernetes
 
 - name: Prerequisite the master
   hosts: master
   become: yes
-  gather_facts: false
   roles:
     - kubernetes-master
   tasks:
@@ -17,6 +22,8 @@
     - name: set join command
       set_fact:
         join_command: "{{ join_command_raw.stdout_lines[0] }}"
+
+
 
 - name: Join to cluster
   hosts: nodes
