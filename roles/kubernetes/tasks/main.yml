@@ -17,18 +17,6 @@
     state: directory
     mode: '0755'
 
-# - name: Touch a file, using symbolic modes to set the permissions
-#   ansible.builtin.file:
-#     path: /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-#     state: touch
-#     mode: '0755'
-
-# - name: Download apt-key.gpg
-#   ansible.builtin.get_url:
-#     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-#     dest: /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-#     mode: '0440'
-
 - name: add Kubernetes' APT repository
   apt_repository:
     repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
