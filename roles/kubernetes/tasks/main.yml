@@ -32,9 +32,10 @@
     update_cache: true
 
 - name: Hold kubelet, kubeadm, kubectl
-  ansible.builtin.dpkg_selections:
-    name: 
-      - kubelet
-      - kubeadm
-      - kubectl
+  dpkg_selections:
+    name: "{{ item }}" 
     selection: hold
+  loop:
+    - kubelet
+    - kubeadm
+    - kubectl
