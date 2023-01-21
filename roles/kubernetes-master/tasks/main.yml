@@ -11,13 +11,13 @@
     timeout: 20
 
 - name: Create a directory if it does not exist
-  ansible.builtin.file:
+  file:
     path: $HOME/.kube
     state: directory
     mode: '0755'
 
 - name: Copy file with owner and permissions
-  ansible.builtin.copy:
+  copy:
     src: /etc/kubernetes/admin.conf
     dest: $HOME/.kube/config
     remote_src: yes
