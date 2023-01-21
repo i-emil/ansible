@@ -55,10 +55,10 @@
   systemd:
     daemon_reload: yes
 
-- name: Reload service httpd, in all cases
+- name: Reload cri-docker
   systemd:
     name: "{{ item }}"
-    state: reloaded
+    enabled: yes
   loop:
     - cri-docker.service
     - cri-docker.socket
