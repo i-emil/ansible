@@ -5,25 +5,20 @@
     repo: 'https://github.com/Mirantis/cri-dockerd.git'
     dest: cri-dockerd
 
-- name: Create a directory installer_linux
-  file:
-    path: installer_linux
-    state: directory
-    mode: '0755'
+- name: Install go
+  apt:
+    pkg:
+      - golang-go
+    state: latest
+    update_cache: true
 
-- name: Install go lang
-  get_url:
-    url: https://storage.googleapis.com/golang/getgo/installer_linux
-    dest: installer_linux
-    mode: '0744'
-
-- name: Create a directory if it does not exist
+- name: Create a directory bin
   file:
     path: cri-dockerd/bin
     state: directory
     mode: '0755'
 
-- name: Initialize the cluster
+- name: Go build
   shell: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
     chdir: $HOME
