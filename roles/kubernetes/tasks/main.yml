@@ -11,11 +11,10 @@
     state: latest
     update_cache: true
 
-- name: Create a directory if it does not exist
-  ansible.builtin.file:
-    path: /etc/apt/keyrings
-    state: directory
-    mode: '0755'
+- name: add Kubernetes apt-key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
 
 - name: add Kubernetes' APT repository
   apt_repository:
