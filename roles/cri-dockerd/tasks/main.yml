@@ -5,14 +5,20 @@
     repo: 'https://github.com/Mirantis/cri-dockerd.git'
     dest: cri-dockerd
 
+- name: Create a directory installer_linux
+  file:
+    path: installer_linux
+    state: directory
+    mode: '0755'
+
 - name: Install go lang
-  ansible.builtin.get_url:
+  get_url:
     url: https://storage.googleapis.com/golang/getgo/installer_linux
     dest: installer_linux
     mode: '0744'
 
 - name: Create a directory if it does not exist
-  ansible.builtin.file:
+  file:
     path: cri-dockerd/bin
     state: directory
     mode: '0755'
@@ -24,7 +30,7 @@
     creates: go_cri_dockerd_builded.log
 
 - name: Create a directory if it does not exist
-  ansible.builtin.file:
+  file:
     path: /usr/local/bin
     state: directory
     mode: '0744'
@@ -36,7 +42,7 @@
     creates: go_cri_dockerd_builded.log
 
 - name: Copy cri-dockerd files to /etc/systemd
-  ansible.builtin.copy:
+  copy:
     src: packaging/systemd/*
     dest: /etc/systemd/system
     owner: "{{ ansible_user }}"
