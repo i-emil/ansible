@@ -57,6 +57,7 @@
 
 - name: Reload cri-docker
   systemd:
+    state: started
     name: "{{ item }}"
     enabled: yes
   loop:
