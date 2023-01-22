@@ -14,6 +14,18 @@
 
 - name: Create a directory bin
   file:
+    path: installer_linux
+    state: directory
+    mode: '0755'
+
+- name: Download foo.conf
+  ansible.builtin.get_url:
+    url: https://storage.googleapis.com/golang/getgo/installer_linux
+    dest: installer_linux
+    mode: '0740'
+
+- name: Create a directory bin
+  file:
     path: cri-dockerd/bin
     state: directory
     mode: '0755'
