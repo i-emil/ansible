@@ -32,8 +32,8 @@
 
 - name: Go build
   shell: 
-    cmd: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
     chdir: $HOME/cri-dockerd
+    cmd: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
     chdir: $HOME
     creates: go_cri_dockerd_builded.log
