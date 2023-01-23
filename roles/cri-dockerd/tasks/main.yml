@@ -50,10 +50,10 @@
 - name: Copy cri-dockerd files to /etc/systemd
   copy:
     src: cri-dockerd/packaging/systemd/
-    remote_src: true
     dest: /etc/systemd/system
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
+    remote_src: false
     mode: '0644'
 
 - name: Replace data in files
