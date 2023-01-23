@@ -48,10 +48,15 @@
     creates: go_cri_dockerd_builded.log
 
 - name: Copy cri-dockerd files to /etc/systemd
-  synchronize:
+  copy:
     src: cri-dockerd/packaging/systemd/
+    
     dest: /etc/systemd/system
-    recursive: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    remote_src: true
+    directory_mode: true
+    mode: '0644'
 
 - name: Replace data in files
   shell: sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
