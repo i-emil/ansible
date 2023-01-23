@@ -51,8 +51,7 @@
   synchronize:
     src: cri-dockerd/packaging/systemd/
     dest: /etc/systemd/system
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    recursive: yes
     mode: '0644'
 
 - name: Replace data in files
