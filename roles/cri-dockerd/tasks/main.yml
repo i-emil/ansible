@@ -48,7 +48,7 @@
     creates: go_cri_dockerd_builded.log
 
 - name: Copy cri-dockerd files to /etc/systemd
-  copy:
+  synchronize:
     src: cri-dockerd/packaging/systemd/
     dest: /etc/systemd/system
     owner: "{{ ansible_user }}"
