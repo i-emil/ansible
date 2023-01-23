@@ -5,10 +5,10 @@
     repo: 'https://github.com/Mirantis/cri-dockerd.git'
     dest: cri-dockerd
 
-- name: Download go installer
+- name: Download go lang installer
   get_url:
     url: https://storage.googleapis.com/golang/getgo/installer_linux
-    dest: /installer_linux
+    dest: installer_linux
     mode: '0740'
 
 - name: Install go
