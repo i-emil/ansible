@@ -5,24 +5,23 @@
     repo: 'https://github.com/Mirantis/cri-dockerd.git'
     dest: cri-dockerd
 
-- name: Install go
-  apt:
-    pkg:
-      - golang-go
-    state: latest
-    update_cache: true
-
-- name: Create a directory bin
-  file:
-    path: installer_linux
-    state: directory
-    mode: '0755'
-
-- name: Download foo.conf
+- name: Download go installer
   ansible.builtin.get_url:
     url: https://storage.googleapis.com/golang/getgo/installer_linux
     dest: installer_linux
     mode: '0740'
+
+- name: Install go
+  shell: ./installer_linux >> go_installed.log
+  args:
+    chdir: $HOME
+    creates: go_installed.log
+
+- name: Source go
+  shell: source ~/.bash_profile >> go_sourced.log
+  args:
+    chdir: $HOME
+    creates: go_sourced.log
 
 - name: Create a directory bin
   file:
