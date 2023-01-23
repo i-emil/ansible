@@ -53,7 +53,7 @@
     dest: /etc/systemd/system
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    remote_src: true
+    remote_src: false
     directory_mode: true
     mode: '0644'
 
