@@ -31,9 +31,9 @@
     mode: '0755'
 
 - name: Go build
-  command: 
+  shell: 
+    cmd: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
     chdir: $HOME/cri-dockerd
-  shell: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
     chdir: $HOME
     creates: go_cri_dockerd_builded.log
