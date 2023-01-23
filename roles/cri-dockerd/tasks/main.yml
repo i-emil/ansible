@@ -12,7 +12,7 @@
     mode: '0740'
 
 - name: Install go lang
-  shell: $HOME/installer_linux >> go_installed.log
+  shell: ~/installer_linux >> go_installed.log
   args:
     chdir: $HOME
     creates: go_installed.log
