@@ -49,8 +49,7 @@
 
 - name: Copy cri-dockerd files to /etc/systemd
   copy:
-    src: cri-dockerd/packaging/systemd/
-    
+    src: cri-dockerd/packaging/systemd
     dest: /etc/systemd/system
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
