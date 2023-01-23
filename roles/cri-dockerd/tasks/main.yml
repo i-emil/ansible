@@ -16,9 +16,10 @@
   args:
     chdir: $HOME
     creates: go_installed.log
+    executable: /bin/bash
 
 - name: Source go
-  shell: source $HOME/.bash_profile >> go_sourced.log
+  shell: source ~/.bash_profile >> go_sourced.log
   args:
     chdir: $HOME
     creates: go_sourced.log
