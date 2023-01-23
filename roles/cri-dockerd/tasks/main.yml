@@ -12,13 +12,13 @@
     mode: '0740'
 
 - name: Install go lang
-  shell: ./installer_linux >> go_installed.log
+  shell: $HOME/installer_linux >> go_installed.log
   args:
     chdir: $HOME
     creates: go_installed.log
 
 - name: Source go
-  shell: source ~/.bash_profile >> go_sourced.log
+  shell: source $HOME/.bash_profile >> go_sourced.log
   args:
     chdir: $HOME
     creates: go_sourced.log
