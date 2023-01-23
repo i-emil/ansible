@@ -31,7 +31,7 @@
     mode: '0755'
 
 - name: Go build
-  shell: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
+  shell: go build -o $HOME/cri-dockerd/bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
     chdir: $HOME
     creates: go_cri_dockerd_builded.log
@@ -43,7 +43,7 @@
     state: directory
     mode: '0744'
 
-- name: Install cri-dockerd
+- name: Install cri dockerd
   shell: install -o root -g root -m 0755 cri-dockerd/bin/cri-dockerd /usr/local/bin/cri-dockerd
   args:
     chdir: $HOME
