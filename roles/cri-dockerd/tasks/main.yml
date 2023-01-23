@@ -14,7 +14,7 @@
 - name: Install go lang
   shell: ./installer_linux >> go_installed.log
   args:
-    chdir: $HOME
+    chdir: /home/{{ ansible_user }}
     creates: go_installed.log
     executable: /bin/bash
 
