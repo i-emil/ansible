@@ -19,21 +19,21 @@
     executable: /bin/bash
 
 - name: Source go
-  shell: source ~/.bash_profile >> go_sourced.log
+  shell: "source /home/{{ ansible_user }}/.bash_profile >> go_sourced.log"
   args:
-    chdir: $HOME
+    chdir: "/home/{{ ansible_user }}"
     creates: go_sourced.log
 
 - name: Create a directory bin
   file:
-    path: cri-dockerd/bin
+    path: "/home/{{ ansible_user }}/cri-dockerd/bin"
     state: directory
     mode: '0755'
 
 - name: Go build
   shell: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
-    chdir: cri-dockerd
+    chdir: "/home/{{ ansible_user }}/cri-dockerd"
     creates: go_cri_dockerd_builded.log
 
 - name: Create a directory if it does not exist
@@ -43,9 +43,9 @@
     mode: '0744'
 
 - name: Install cri dockerd
-  shell: install -o root -g root -m 0755 cri-dockerd/bin/cri-dockerd /usr/local/bin/cri-dockerd
+  shell: install -o root -g root -m 0755 /home/{{ ansible_user }}/cri-dockerd/bin/cri-dockerd /usr/local/bin/cri-dockerd
   args:
-    chdir: $HOME
+    chdir: "/home/{{ ansible_user }}"
     creates: go_cri_dockerd_builded.log
 
 - name: Copy cri-dockerd files to /etc/systemd
