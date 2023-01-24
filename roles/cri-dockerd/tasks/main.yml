@@ -35,7 +35,7 @@
   shell: go build -o /home/{{ ansible_user }}/cri-dockerd/bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
     chdir: "/home/{{ ansible_user }}/cri-dockerd"
-    creates: go_cri_dockerd_builded.log
+    creates: go_cri_dockerd_builded2.log
     executable: /bin/bash
 
 - name: Create a directory if it does not exist
