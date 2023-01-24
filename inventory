@@ -1,5 +1,5 @@
-master  ansible_host=10.128.0.15
-nod1    ansible_host=10.128.0.16
+master  ansible_host=10.128.0.17
+nod1    ansible_host=10.128.0.18
 
 [nodes]
 nod1
