@@ -23,6 +23,7 @@
   args:
     chdir: "/home/{{ ansible_user }}"
     creates: go_sourced.log
+    executable: /bin/bash
 
 - name: Create a directory bin
   file:
