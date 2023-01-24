@@ -19,7 +19,7 @@
     executable: /bin/bash
 
 - name: Source go
-  shell: "source /home/{{ ansible_user }}/.bash_profile >> go_sourced.log"
+  shell: "source /root/.bash_profile >> go_sourced.log"
   args:
     chdir: "/home/{{ ansible_user }}"
     creates: go_sourced.log
