@@ -31,8 +31,8 @@
     state: directory
     mode: '0755'
 
-- name: Go build
-  shell: go build -o bin/cri-dockerd >> go_cri_dockerd_builded.log
+- name: Go lang build
+  shell: go build -o /home/{{ ansible_user }}/cri-dockerd/bin/cri-dockerd >> go_cri_dockerd_builded.log
   args:
     chdir: "/home/{{ ansible_user }}/cri-dockerd"
     creates: go_cri_dockerd_builded.log
