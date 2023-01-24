@@ -3,6 +3,12 @@
   become: yes
   roles:
     - docker
+
+- name: Apply cri-dockerd
+  hosts: cluster
+  become: yes
+  become_user: root
+  roles:
     - cri-dockerd
 
 - name: Install kubernetes
