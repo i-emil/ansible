@@ -12,11 +12,11 @@
     - vm.overcommit_memory = 1
     - net.ipv4.ip_nonlocal_bind = 1
 
-# - name: Initialize the cluster
-#   shell: kubeadm init --config /home/{{ ansible_user }}/ansible/kubeadm-config.yml >> cluster_initialized.txt
-#   args:
-#     chdir: /home/{{ ansible_user }}
-#     creates: cluster_initialized.log
+- name: Initialize the cluster
+  shell: kubeadm init --config /home/{{ ansible_user }}/ansible/kubeadm-config.yml >> cluster_initialized.txt
+  args:
+    chdir: /home/{{ ansible_user }}
+    creates: cluster_initialized.log
 
 - name: Sleep for 20 seconds
   wait_for:
