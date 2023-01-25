@@ -1,7 +1,7 @@
 ---
 # tasks file for kubernetes-master
 - name: Initialize the cluster
-  shell: kubeadm init --ignore-preflight-errors=true --config /home/{{ ansible_user }}/ansible/kubeadm-config.yml >> cluster_initialized.txt
+  shell: kubeadm init --ignore-preflight-errors=all --config /home/{{ ansible_user }}/ansible/kubeadm-config.yml >> cluster_initialized.txt
   args:
     chdir: $HOME
     creates: cluster_initialized.log
