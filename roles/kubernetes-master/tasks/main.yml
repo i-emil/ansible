@@ -38,7 +38,7 @@
     mode: '0755'
 
 - name: install Pod network 
-  shell: kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml >> pod_network_setup.txt
+  shell: kubectl apply --kubeconfig /home/kuber/.kube/config -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml >> pod_network_setup.txt
   args:
     chdir: $HOME
     creates: pod_network_setup.txt
