@@ -25,9 +25,9 @@
 - name: Install required system packages
   apt:
     pkg:
-      - kubelet=1.23.0-00
-      - kubeadm=1.23.0-00
-      - kubectl=1.23.0-00
+      - kubelet=1.22.0-00
+      - kubeadm=1.22.0-00
+      - kubectl=1.22.0-00
     state: present
     update_cache: true
 
