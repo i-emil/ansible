@@ -1,7 +1,7 @@
 ---
 # tasks file for kubernetes-master
 - name: Initialize the cluster
-  shell: kubeadm init --config $HOME/ansible/kubeadm-config.yml >> cluster_initialized.txt
+  shell: kubeadm init --config /home/{{ ansible_user }}/ansible/kubeadm-config.yml >> cluster_initialized.txt
   args:
     chdir: $HOME
     creates: cluster_initialized.log
@@ -12,14 +12,14 @@
 
 - name: Create a directory if it does not exist
   file:
-    path: $HOME/.kube
+    path: /home/{{ ansible_user }}/.kube
     state: directory
     mode: '0755'
 
 - name: Copy file with owner and permissions
   copy:
     src: /etc/kubernetes/admin.conf
-    dest: $HOME/.kube/config
+    dest: /home/{{ ansible_user }}/.kube/config
     remote_src: yes
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
