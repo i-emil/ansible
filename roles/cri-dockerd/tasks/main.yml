@@ -8,11 +8,11 @@
 - name: Download go lang installer
   get_url:
     url: https://storage.googleapis.com/golang/getgo/installer_linux
-    dest: ./installer_linux
+    dest: /home/{{ ansible_user }}/installer_linux
     mode: '0740'
 
 - name: Install go lang
-  shell: ./installer_linux >> go_installed.log
+  shell: ./home/{{ ansible_user }}/installer_linux >> go_installed.log
   args:
     chdir: /home/{{ ansible_user }}
     creates: go_installed.log
