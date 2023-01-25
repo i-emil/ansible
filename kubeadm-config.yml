@@ -4,4 +4,4 @@ kubernetesVersion: v1.22.0
 ---
 kind: KubeletConfiguration
 apiVersion: kubelet.config.k8s.io/v1beta1
-cgroupDriver: systemd
+cgroupDriver: cgroupfs
