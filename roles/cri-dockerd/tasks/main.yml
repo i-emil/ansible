@@ -12,7 +12,7 @@
     mode: '0740'
 
 - name: Install go lang
-  shell: ./home/{{ ansible_user }}/installer_linux >> go_installed.log
+  shell: /home/{{ ansible_user }}/installer_linux >> go_installed.log
   args:
     chdir: /home/{{ ansible_user }}
     creates: go_installed.log
