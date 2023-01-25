@@ -4,7 +4,6 @@
   apt:
     pkg:
       - software-properties-common
-      - python-pip
       - python3-pip
       - virtualenv
       - python3-setuptools
