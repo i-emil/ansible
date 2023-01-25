@@ -1,7 +1,7 @@
 ---
 # tasks file for kubernetes-master
 - name: Initialize the cluster
-  shell: kubeadm init --cri-socket=unix:///var/run/cri-dockerd.sock --ignore-preflight-errors=all >> cluster_initialized.txt
+  shell: kubeadm init --ignore-preflight-errors=all >> cluster_initialized.txt
   args:
     chdir: $HOME
     creates: cluster_initialized.log
