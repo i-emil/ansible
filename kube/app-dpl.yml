@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-kuber-app-dpl
+  labels:
+    app: hello-world-kuber-app-dpl
+spec:
+  replicas: 3
+  minReadySeconds: 5
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: hello-world-kuber-app
+  template:
+    metadata:
+      labels:
+        app: hello-world-kuber-app
+    spec:
+      containers:
+      - name: hello-world-kuber-app
+        image: bokovets/kuber:v1.0
+        ports:
+        - name: http-port
+          containerPort: 8000
