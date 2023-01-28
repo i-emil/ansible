@@ -4,7 +4,7 @@ metadata:
   name: app-svc
 spec:
   selector:
-    app: hello-world-app
+    app: hello-world-kuber-app
   ports:
   - name: app-svc-port
     protocol: TCP
