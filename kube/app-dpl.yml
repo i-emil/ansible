@@ -33,4 +33,4 @@ spec:
       - name: os-data-volume
         hostPath:
           path: /data
-          type: Directory
+          type: DirectoryOrCreate
