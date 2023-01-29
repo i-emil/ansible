@@ -26,3 +26,11 @@ spec:
         ports:
         - name: http-port
           containerPort: 8000
+        volumeMounts: 
+        - mountPath: /file-data
+          name: os-data-volume
+      volumes:
+      - name: os-data-volume
+        hostPath:
+          path: /data
+          type: Directory
