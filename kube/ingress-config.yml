@@ -44,7 +44,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: app.iemil.co
+  - host: app.iemil.in
     http:
       paths:
       - path: /
